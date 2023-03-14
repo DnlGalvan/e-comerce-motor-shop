@@ -51,9 +51,7 @@ const Header = ({ auction, colorFont, image }: any) => {
 	} = useContext(MotorShopContext);
 	const navigate = useNavigate();
 	const showSideBar = () => setIsSideBarVisible(!isSideBarVisible);
-	const [backgroundColor, setBackgroundColor] = useState<string | undefined>(
-		undefined
-	);
+
 	const locationRoute = useLocation();
 
 	const handleLocation = async () => {
@@ -117,7 +115,7 @@ const Header = ({ auction, colorFont, image }: any) => {
 				<Image
 					src={logo}
 					alt="logo-motor-shop"
-					onClick={() => navigate("/homepage")}
+					onClick={() => handleButtonClick("home")}
 				/>
 				<Nav>
 					<DivNav>
@@ -412,7 +410,9 @@ const Header = ({ auction, colorFont, image }: any) => {
 									</DivBar>
 									<Divider />
 									<DivBar>
-										<LinkBar href="/login">
+										<LinkBar
+											onClick={() => navigate(`/login`)}
+										>
 											Fazer Login
 										</LinkBar>
 										<Button
@@ -421,6 +421,9 @@ const Header = ({ auction, colorFont, image }: any) => {
 											component={"big"}
 											border={"grey4"}
 											width={"fullWidth"}
+											onClick={() =>
+												navigate(`/register`)
+											}
 										>
 											Cadastrar
 										</Button>
@@ -547,7 +550,14 @@ const Header = ({ auction, colorFont, image }: any) => {
 													Editar Perfil
 												</Text>
 												<Text>Editar Endereço</Text>
-												<Text onClick={logout}>
+												<Text
+													onClick={() => {
+														logout();
+														setIsSideBarVisible(
+															false
+														);
+													}}
+												>
 													Sair
 												</Text>
 											</>
@@ -567,7 +577,14 @@ const Header = ({ auction, colorFont, image }: any) => {
 												>
 													Meus Anúncios
 												</Text>
-												<Text onClick={logout}>
+												<Text
+													onClick={() => {
+														logout();
+														setIsSideBarVisible(
+															false
+														);
+													}}
+												>
 													Sair
 												</Text>
 											</>

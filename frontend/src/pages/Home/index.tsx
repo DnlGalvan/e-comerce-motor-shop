@@ -11,20 +11,22 @@ import {
 } from "./style";
 import { useContext, useEffect } from "react";
 import { MotorShopContext } from "../../context";
+import { scroller } from "react-scroll";
 
 const Home = () => {
 	document.body.style.overflow = "unset";
-	const { randomAds, getRandomAds, setPrevLocation } = useContext(MotorShopContext);
+	const { randomAds, getRandomAds, setPrevLocation } =
+		useContext(MotorShopContext);
 
 	useEffect(() => {
 		getRandomAds();
-		setPrevLocation(location.pathname)
+		setPrevLocation(location.pathname);
 	}, []);
 
 	return (
 		<>
 			<Header />
-			<main id="#home" style={{ minHeight: "calc(100vh - 11.25rem)"}}>
+			<main id="home" style={{ minHeight: "calc(100vh - 11.25rem)" }}>
 				<InfoSection>
 					<ContainerInfo>
 						<TitleHome>
@@ -44,6 +46,11 @@ const Home = () => {
 									bgcolor: "whiteFixed",
 									color: "grey1",
 								}}
+								onClick={() =>
+									scroller.scrollTo("carros", {
+										smooth: "easeInOutQuart",
+									})
+								}
 							>
 								Carros
 							</Button>
@@ -57,6 +64,11 @@ const Home = () => {
 									bgcolor: "whiteFixed",
 									color: "grey1",
 								}}
+								onClick={() =>
+									scroller.scrollTo("motos", {
+										smooth: "easeInOutQuart",
+									})
+								}
 							>
 								Motos
 							</Button>

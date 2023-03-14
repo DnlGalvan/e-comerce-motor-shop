@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
@@ -15,6 +15,11 @@ import { Container, ContainerForm, Fieldset, Main, Title } from "./styles";
 const Login = () => {
 	const { signIn } = useContext(MotorShopContext);
 	document.body.style.overflow = "unset";
+
+	useEffect(() => {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	}, []);
+
 	const {
 		register,
 		handleSubmit,
